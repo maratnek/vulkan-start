@@ -1,0 +1,12 @@
+[requires]
+#vulkan-headers/0.1@conan/latest # it's my own build
+glfw/3.3.2
+
+[generators]
+cmake
+cmake_paths
+cmake_find_package
+
+[options]
+*:shared=True
+
