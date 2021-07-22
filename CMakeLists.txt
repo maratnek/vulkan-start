@@ -22,8 +22,18 @@ conan_set_find_library_paths()
 
 
 set(CMAKE_BINARY_DIR ${CMAKE_BINARY_DIR}/bin)
+set(FRAG frag.spv)
+set(SHADER_FRAG shader.frag)
+add_custom_command( OUTPUT . COMMAND glslc ${SHADER_FRAG} -o ${FRAG}
+                   WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/resource/shaders
+)
+# add_custom_command(OUTPUT vert.spv 
+#                    COMMAND glslc -i ${CMAKE_SOURCE_DIR}/resource/shaders/shader.vert 
+#                         # -o ${CMAKE_BINARY_DIR}/shaders/vert.spv)
+# )
 file(COPY ${CMAKE_SOURCE_DIR}/resource/. DESTINATION ${CMAKE_BINARY_DIR})
 message(${CMAKE_BINARY_DIR})
+
 
 include(CTest)
 enable_testing()
