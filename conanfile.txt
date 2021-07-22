@@ -1,6 +1,7 @@
 [requires]
-#vulkan-headers/0.1@conan/latest # it's my own build
 glfw/3.3.2
+glm/0.9.9.8
+#glm/0.9.9.5@g-truc/stable
 
 [generators]
 cmake

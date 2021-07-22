@@ -27,16 +27,13 @@ include(CTest)
 enable_testing()
 
 add_executable(vulkan_game 
-    Source.cpp
-    AppValidationLayersAndExtensions.cpp
-    Device.cpp
-    VulkanContext.cpp
-    VulkanInstance.cpp
+    source.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} 
     vulkan
     CONAN_PKG::glfw
+    CONAN_PKG::glm
     )
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
