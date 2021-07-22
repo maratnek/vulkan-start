@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.8)
 
 project(vulkan_game VERSION 0.1.0)
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Download automatically, you can also just copy the conan.cmake file
@@ -15,12 +15,14 @@ include(${CMAKE_BINARY_DIR}/conan.cmake)
 conan_cmake_run(
 			CONANFILE conanfile.txt
 			BASIC_SETUP CMAKE_TARGETS 
-			# BUILD_TYPE "Debug"
+			BUILD_TYPE "Debug"
 			)
 			
 conan_set_find_library_paths()
 
+
 set(CMAKE_BINARY_DIR ${CMAKE_BINARY_DIR}/bin)
+file(COPY ${CMAKE_SOURCE_DIR}/resource/. DESTINATION ${CMAKE_BINARY_DIR})
 message(${CMAKE_BINARY_DIR})
 
 include(CTest)
@@ -34,6 +36,8 @@ target_link_libraries(${PROJECT_NAME}
     vulkan
     CONAN_PKG::glfw
     CONAN_PKG::glm
+    CONAN_PKG::stb
+    CONAN_PKG::tinyobjloader
     )
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
